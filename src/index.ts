@@ -1,5 +1,8 @@
 import { Switch } from '../../shared/Switch'
 import { Point } from '../../shared/graphics'
+
+export {Point}
+
 export enum MouseModifierKey {
     NoMod= 0,
     Ctrl= 1,

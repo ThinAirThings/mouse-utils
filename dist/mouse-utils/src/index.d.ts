@@ -1,4 +1,5 @@
 import { Point } from '../../shared/graphics';
+export { Point };
 export declare enum MouseModifierKey {
     NoMod = 0,
     Ctrl = 1,
