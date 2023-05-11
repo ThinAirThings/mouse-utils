@@ -1,6 +1,6 @@
 {
   "name": "@thinairthings/mouse-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Thin Air Mouse Utils",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,6 +18,5 @@
   "keywords": [],
   "author": "Dan Lannan",
   "license": "MIT",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
