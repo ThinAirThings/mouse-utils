@@ -1,3 +1,4 @@
+import { MouseEvent as ReactMouseEvent } from 'react';
 import { Point } from '../../shared/graphics';
 export { Point };
 export declare enum MouseModifierKey {
@@ -15,7 +16,7 @@ export declare enum MouseButton {
     Left = "Left",
     Right = "Right"
 }
-export declare const mouseButton: (event: MouseEvent) => any;
+export declare const mouseButton: (event: MouseEvent | ReactMouseEvent) => any;
 export declare const mouseModifierKey: (event: MouseEvent) => MouseModifierKey;
 export declare const mousePoint: (event: MouseEvent) => Point;
 export declare const mouseGuard: (event: MouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;

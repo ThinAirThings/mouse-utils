@@ -1,3 +1,4 @@
+import { MouseEvent as ReactMouseEvent } from 'react'
 import { Switch } from '../../shared/Switch'
 import { Point } from '../../shared/graphics'
 
@@ -20,7 +21,7 @@ export enum MouseButton {
 }
 
 
-export const mouseButton = (event: MouseEvent) => new Switch(event.button)
+export const mouseButton = (event: MouseEvent | ReactMouseEvent) => new Switch(event.button)
     .case(0, ()=>MouseButton.Left)
     .case(2, ()=>MouseButton.Right)
     .default(()=>MouseButton.Left)

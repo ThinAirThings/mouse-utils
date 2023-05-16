@@ -18,5 +18,7 @@
   "keywords": [],
   "author": "Dan Lannan",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "@types/react": "^18.2.6"
+  }
 }
