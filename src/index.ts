@@ -28,7 +28,7 @@ export const mouseButton = (event: MouseEvent | ReactMouseEvent) => new Switch(e
     .result
 
 
-export const mouseModifierKey = (event: MouseEvent): MouseModifierKey => {
+export const mouseModifierKey = (event: MouseEvent | ReactMouseEvent): MouseModifierKey => {
     
     const selection: number = (Number(event.altKey) << 2) | (Number(event.shiftKey) << 1) | (Number(event.ctrlKey)||(Number(event.metaKey)))
     const keyMod = MouseModifierKey[selection]
@@ -43,13 +43,13 @@ export const mouseModifierKey = (event: MouseEvent): MouseModifierKey => {
       .result
 }
 
-export const mousePoint = (event: MouseEvent): Point => ({
+export const mousePoint = (event: MouseEvent | ReactMouseEvent): Point => ({
     x: event.clientX,
     y: event.clientY
 })
 
 export const mouseGuard = (
-    event: MouseEvent,
+    event: MouseEvent | ReactMouseEvent,
     button: 'Left' | 'Right', 
     modifier: keyof typeof MouseModifierKey,
     fn: ()=>void) => 

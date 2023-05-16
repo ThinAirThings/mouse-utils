@@ -17,6 +17,6 @@ export declare enum MouseButton {
     Right = "Right"
 }
 export declare const mouseButton: (event: MouseEvent | ReactMouseEvent) => any;
-export declare const mouseModifierKey: (event: MouseEvent) => MouseModifierKey;
-export declare const mousePoint: (event: MouseEvent) => Point;
-export declare const mouseGuard: (event: MouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
+export declare const mouseModifierKey: (event: MouseEvent | ReactMouseEvent) => MouseModifierKey;
+export declare const mousePoint: (event: MouseEvent | ReactMouseEvent) => Point;
+export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
