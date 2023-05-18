@@ -16,8 +16,8 @@ export enum MouseModifierKey {
     Any=8
 }
 export enum MouseButton {
-    Left = 'Left',
-    Right = 'Right',
+    Left = 'left',
+    Right = 'right',
 }
 
 
@@ -55,7 +55,7 @@ export const mouseRect = (mouseDownPoint: Point, mouseMovePoint: Point) => {
 }
 export const mouseGuard = (
     event: MouseEvent | ReactMouseEvent,
-    button: 'Left' | 'Right', 
+    button: 'left' | 'right', 
     modifier: keyof typeof MouseModifierKey,
     fn: ()=>void) => 
 {

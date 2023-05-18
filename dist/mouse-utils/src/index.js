@@ -16,8 +16,8 @@ var MouseModifierKey;
 })(MouseModifierKey = exports.MouseModifierKey || (exports.MouseModifierKey = {}));
 var MouseButton;
 (function (MouseButton) {
-    MouseButton["Left"] = "Left";
-    MouseButton["Right"] = "Right";
+    MouseButton["Left"] = "left";
+    MouseButton["Right"] = "right";
 })(MouseButton = exports.MouseButton || (exports.MouseButton = {}));
 const mouseButton = (event) => new Switch_1.Switch(event.button)
     .case(0, () => MouseButton.Left)
