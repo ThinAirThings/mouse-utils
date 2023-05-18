@@ -52,8 +52,18 @@ const mouseRect = (mouseDownPoint, mouseMovePoint) => {
     return { x, y, width, height };
 };
 exports.mouseRect = mouseRect;
-const mouseGuard = (event, button, modifier, fn) => {
+// export const mouseGuard = (
+//     event: MouseEvent | ReactMouseEvent,
+//     button: 'Left' | 'Right', 
+//     modifier: keyof typeof MouseModifierKey,
+//     fn: ()=>void) => 
+// {
+//     !(   (mouseButton(event) === button) 
+//       && ((MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifier === 'Any'))
+//       ) || fn()
+// }
+const mouseGuard = (event, button, modifiers, fn) => {
     !(((0, exports.mouseButton)(event) === button)
-        && ((MouseModifierKey[(0, exports.mouseModifierKey)(event)] === modifier) || (modifier === 'Any'))) || fn();
+        && (modifiers.some(modifier => MouseModifierKey[(0, exports.mouseModifierKey)(event)] === modifier) || (modifiers.includes('Any')))) || fn();
 };
 exports.mouseGuard = mouseGuard;
