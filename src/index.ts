@@ -21,11 +21,11 @@ export enum MouseButton {
 }
 
 
-export const mouseButton = (event: MouseEvent | ReactMouseEvent) => new Switch(event.button)
+export const mouseButton = (event: MouseEvent | ReactMouseEvent): MouseButton => new Switch(event.button)
     .case(0, ()=>MouseButton.Left)
     .case(2, ()=>MouseButton.Right)
     .default(()=>MouseButton.Left)
-    .result as MouseButton
+    .result
 
 
 export const mouseModifierKey = (event: MouseEvent | ReactMouseEvent): MouseModifierKey => { 
