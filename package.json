@@ -1,6 +1,6 @@
 {
   "name": "@thinairthings/mouse-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Thin Air Mouse Utils",
   "main": "dist/mouse-utils/src/index.js",
   "types": "dist/mouse-utils/src/index.d.ts",
