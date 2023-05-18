@@ -25,4 +25,4 @@ export declare const mouseRect: (mouseDownPoint: Point, mouseMovePoint: Point) =
     width: number;
     height: number;
 };
-export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: 'left' | 'right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
+export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: MouseButton, modifier: MouseModifierKey, fn: () => void) => void;

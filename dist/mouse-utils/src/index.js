@@ -54,7 +54,7 @@ const mouseRect = (mouseDownPoint, mouseMovePoint) => {
 exports.mouseRect = mouseRect;
 const mouseGuard = (event, button, modifier, fn) => {
     !(((0, exports.mouseButton)(event) === button)
-        && ((MouseModifierKey[(0, exports.mouseModifierKey)(event)] === modifier) || (modifier === 'Any'))) || fn();
+        && (((0, exports.mouseModifierKey)(event) === modifier) || (modifier === MouseModifierKey.Any))) || fn();
 };
 exports.mouseGuard = mouseGuard;
 // WORK IN PROGRESS 

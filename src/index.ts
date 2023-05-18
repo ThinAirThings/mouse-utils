@@ -55,12 +55,12 @@ export const mouseRect = (mouseDownPoint: Point, mouseMovePoint: Point) => {
 }
 export const mouseGuard = (
     event: MouseEvent | ReactMouseEvent,
-    button: 'left' | 'right', 
-    modifier: keyof typeof MouseModifierKey,
+    button: MouseButton, 
+    modifier: MouseModifierKey,
     fn: ()=>void) => 
 {
     !(   (mouseButton(event) === button) 
-      && ((MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifier === 'Any'))
+      && ((mouseModifierKey(event) === modifier)||(modifier === MouseModifierKey.Any))
       ) || fn()
 }
 // WORK IN PROGRESS 
