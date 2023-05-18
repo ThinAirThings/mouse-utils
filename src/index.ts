@@ -25,7 +25,7 @@ export const mouseButton = (event: MouseEvent | ReactMouseEvent) => new Switch(e
     .case(0, ()=>MouseButton.Left)
     .case(2, ()=>MouseButton.Right)
     .default(()=>MouseButton.Left)
-    .result
+    .result as MouseButton
 
 
 export const mouseModifierKey = (event: MouseEvent | ReactMouseEvent): MouseModifierKey => { 
@@ -53,23 +53,24 @@ export const mouseRect = (mouseDownPoint: Point, mouseMovePoint: Point) => {
     const height = Math.abs(mouseDownPoint.y - mouseMovePoint.y)
     return {x, y, width, height}
 }
-// export const mouseGuard = (
-//     event: MouseEvent | ReactMouseEvent,
-//     button: 'Left' | 'Right', 
-//     modifier: keyof typeof MouseModifierKey,
-//     fn: ()=>void) => 
-// {
-//     !(   (mouseButton(event) === button) 
-//       && ((MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifier === 'Any'))
-//       ) || fn()
-// }
 export const mouseGuard = (
     event: MouseEvent | ReactMouseEvent,
     button: 'Left' | 'Right', 
-    modifiers: Array<keyof typeof MouseModifierKey>,
-    fn: ()=>void
-) => {
+    modifier: keyof typeof MouseModifierKey,
+    fn: ()=>void) => 
+{
     !(   (mouseButton(event) === button) 
-      && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
+      && ((MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifier === 'Any'))
       ) || fn()
 }
+// WORK IN PROGRESS 
+// export const mouseGuard = (
+//     event: MouseEvent | ReactMouseEvent,
+//     button: 'Left' | 'Right', 
+//     modifiers: Array<keyof typeof MouseModifierKey>,
+//     fn: ()=>void
+// ) => {
+//     !(   (mouseButton(event) === button) 
+//       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
+//       ) || fn()
+// }
