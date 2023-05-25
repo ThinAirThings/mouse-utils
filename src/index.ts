@@ -74,3 +74,47 @@ export const mouseGuard = (
 //       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
 //       ) || fn()
 // }
+
+export const createMouseGuard = <T extends Record<string, any>>(mouseModeTable: T) => (
+    event: MouseEvent | ReactMouseEvent,
+    button: 'left' | 'right'| 'any',
+    modifiers: Array<MouseModifierKey>,
+    mouseModes: Array<keyof T>,
+    fn: ()=>void
+) => {
+    const checkButtonCondition = () => new Switch(button)
+        .case('left', ()=>event.button === 0)
+        .case('right', ()=>event.button === 2)
+        .default(()=>true)
+        .result
+
+
+    const checkModifierCondition = () => {
+        if (modifiers.includes(MouseModifierKey.Any)) {
+            return true;
+        }
+        let pass:boolean = false;
+        for (let mod of modifiers) {
+            pass = new Switch(mod)
+                .case(MouseModifierKey.NoMod, ()=>!event.ctrlKey && !event.shiftKey && !event.altKey)
+                .case(MouseModifierKey.Ctrl, ()=>event.ctrlKey)
+                .case(MouseModifierKey.Shift, ()=>event.shiftKey)
+                .case(MouseModifierKey.ShiftCtrl, ()=>event.shiftKey && event.ctrlKey)
+                .case(MouseModifierKey.Alt, ()=>event.altKey)
+                .case(MouseModifierKey.AltCtrl, ()=>event.altKey && event.ctrlKey)
+                .case(MouseModifierKey.AltShift, ()=>event.altKey && event.shiftKey)
+                .case(MouseModifierKey.AltShiftCtrl, ()=>event.altKey && event.shiftKey && event.ctrlKey)
+                .result
+        }
+        return pass;
+    };
+
+    const checkMouseModeCondition = () => {
+        // adjust this based on your requirements
+        return mouseModes.every((mode) => mouseModeTable[mode] === true);
+    };
+
+    if (checkButtonCondition() && checkModifierCondition() && checkMouseModeCondition()) {
+        fn();
+    }
+}
