@@ -26,4 +26,4 @@ export declare const mouseRect: (mouseDownPoint: Point, mouseMovePoint: Point) =
     height: number;
 };
 export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
-export declare const createMouseGuard: <T extends Record<string, any>>(mouseModeTable: T) => (event: MouseEvent | ReactMouseEvent, button: 'left' | 'right' | 'any', modifiers: Array<MouseModifierKey>, mouseModes: (keyof T)[], fn: () => void) => void;
+export declare const createMouseGuard: <T extends Record<string, any>>(mouseModeTable: T) => (event: MouseEvent | ReactMouseEvent, button: 'left' | 'right' | 'any', modifiers: Array<MouseModifierKey>, fn: () => void) => void;

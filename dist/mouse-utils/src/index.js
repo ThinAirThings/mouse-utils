@@ -68,7 +68,7 @@ exports.mouseGuard = mouseGuard;
 //       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
 //       ) || fn()
 // }
-const createMouseGuard = (mouseModeTable) => (event, button, modifiers, mouseModes, fn) => {
+const createMouseGuard = (mouseModeTable) => (event, button, modifiers, fn) => {
     const checkButtonCondition = () => new Switch_1.Switch(button)
         .case('left', () => event.button === 0)
         .case('right', () => event.button === 2)
@@ -93,11 +93,7 @@ const createMouseGuard = (mouseModeTable) => (event, button, modifiers, mouseMod
         }
         return pass;
     };
-    const checkMouseModeCondition = () => {
-        // adjust this based on your requirements
-        return mouseModes.every((mode) => mouseModeTable[mode] === true);
-    };
-    if (checkButtonCondition() && checkModifierCondition() && checkMouseModeCondition()) {
+    if (checkButtonCondition() && checkModifierCondition()) {
         fn();
     }
 };

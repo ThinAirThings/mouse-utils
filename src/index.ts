@@ -79,7 +79,6 @@ export const createMouseGuard = <T extends Record<string, any>>(mouseModeTable: 
     event: MouseEvent | ReactMouseEvent,
     button: 'left' | 'right'| 'any',
     modifiers: Array<MouseModifierKey>,
-    mouseModes: Array<keyof T>,
     fn: ()=>void
 ) => {
     const checkButtonCondition = () => new Switch(button)
@@ -87,8 +86,7 @@ export const createMouseGuard = <T extends Record<string, any>>(mouseModeTable: 
         .case('right', ()=>event.button === 2)
         .default(()=>true)
         .result
-
-
+    
     const checkModifierCondition = () => {
         if (modifiers.includes(MouseModifierKey.Any)) {
             return true;
@@ -109,12 +107,7 @@ export const createMouseGuard = <T extends Record<string, any>>(mouseModeTable: 
         return pass;
     };
 
-    const checkMouseModeCondition = () => {
-        // adjust this based on your requirements
-        return mouseModes.every((mode) => mouseModeTable[mode] === true);
-    };
-
-    if (checkButtonCondition() && checkModifierCondition() && checkMouseModeCondition()) {
+    if (checkButtonCondition() && checkModifierCondition()) {
         fn();
     }
 }
