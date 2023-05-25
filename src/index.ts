@@ -75,7 +75,7 @@ export const mouseGuard = (
 //       ) || fn()
 // }
 
-export const createMouseGuard = <T extends Record<string, any>>(mouseModeTable: T) => (
+export const mouseGuard2 = <T extends Record<string, any>>(mouseModeTable: T) => (
     event: MouseEvent | ReactMouseEvent,
     button: 'left' | 'right'| 'any',
     modifiers: Array<MouseModifierKey>,

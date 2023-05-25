@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createMouseGuard = exports.mouseGuard = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
+exports.mouseGuard2 = exports.mouseGuard = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
 const Switch_1 = require("../../shared/Switch");
 var MouseModifierKey;
 (function (MouseModifierKey) {
@@ -68,7 +68,7 @@ exports.mouseGuard = mouseGuard;
 //       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
 //       ) || fn()
 // }
-const createMouseGuard = (mouseModeTable) => (event, button, modifiers, fn) => {
+const mouseGuard2 = (mouseModeTable) => (event, button, modifiers, fn) => {
     const checkButtonCondition = () => new Switch_1.Switch(button)
         .case('left', () => event.button === 0)
         .case('right', () => event.button === 2)
@@ -97,4 +97,4 @@ const createMouseGuard = (mouseModeTable) => (event, button, modifiers, fn) => {
         fn();
     }
 };
-exports.createMouseGuard = createMouseGuard;
+exports.mouseGuard2 = mouseGuard2;
