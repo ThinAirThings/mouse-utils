@@ -63,17 +63,6 @@ export const mouseGuard = (
       && ((MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifier === 'Any'))
       ) || fn()
 }
-// WORK IN PROGRESS 
-// export const mouseGuard = (
-//     event: MouseEvent | ReactMouseEvent,
-//     button: 'Left' | 'Right', 
-//     modifiers: Array<keyof typeof MouseModifierKey>,
-//     fn: ()=>void
-// ) => {
-//     !(   (mouseButton(event) === button) 
-//       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
-//       ) || fn()
-// }
 
 export const mouseGuard2 = (
     event: MouseEvent | ReactMouseEvent,
@@ -110,4 +99,15 @@ export const mouseGuard2 = (
     if (checkButtonCondition() && checkModifierCondition()) {
         fn();
     }
+}
+
+export const updateClickCounter = (clickCounter: {
+    count: number,
+    timeout: NodeJS.Timeout | null
+}) => {
+    clickCounter.count++
+    clearTimeout(clickCounter.timeout!)
+    clickCounter.timeout = setTimeout(() => {
+        clickCounter.count = 0
+    }, 500)
 }

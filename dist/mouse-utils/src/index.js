@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mouseGuard2 = exports.mouseGuard = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
+exports.updateClickCounter = exports.mouseGuard2 = exports.mouseGuard = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
 const Switch_1 = require("../../shared/Switch");
 var MouseModifierKey;
 (function (MouseModifierKey) {
@@ -13,12 +13,12 @@ var MouseModifierKey;
     MouseModifierKey[MouseModifierKey["AltShift"] = 6] = "AltShift";
     MouseModifierKey[MouseModifierKey["AltShiftCtrl"] = 7] = "AltShiftCtrl";
     MouseModifierKey[MouseModifierKey["Any"] = 8] = "Any";
-})(MouseModifierKey = exports.MouseModifierKey || (exports.MouseModifierKey = {}));
+})(MouseModifierKey || (exports.MouseModifierKey = MouseModifierKey = {}));
 var MouseButton;
 (function (MouseButton) {
     MouseButton["Left"] = "Left";
     MouseButton["Right"] = "Right";
-})(MouseButton = exports.MouseButton || (exports.MouseButton = {}));
+})(MouseButton || (exports.MouseButton = MouseButton = {}));
 const mouseButton = (event) => new Switch_1.Switch(event.button)
     .case(0, () => MouseButton.Left)
     .case(2, () => MouseButton.Right)
@@ -57,17 +57,6 @@ const mouseGuard = (event, button, modifier, fn) => {
         && ((MouseModifierKey[(0, exports.mouseModifierKey)(event)] === modifier) || (modifier === 'Any'))) || fn();
 };
 exports.mouseGuard = mouseGuard;
-// WORK IN PROGRESS 
-// export const mouseGuard = (
-//     event: MouseEvent | ReactMouseEvent,
-//     button: 'Left' | 'Right', 
-//     modifiers: Array<keyof typeof MouseModifierKey>,
-//     fn: ()=>void
-// ) => {
-//     !(   (mouseButton(event) === button) 
-//       && (modifiers.some(modifier => MouseModifierKey[mouseModifierKey(event)] === modifier)||(modifiers.includes('Any')))
-//       ) || fn()
-// }
 const mouseGuard2 = (event, button, modifiers, fn) => {
     const checkButtonCondition = () => new Switch_1.Switch(button)
         .case('left', () => event.button === 0)
@@ -98,3 +87,11 @@ const mouseGuard2 = (event, button, modifiers, fn) => {
     }
 };
 exports.mouseGuard2 = mouseGuard2;
+const updateClickCounter = (clickCounter) => {
+    clickCounter.count++;
+    clearTimeout(clickCounter.timeout);
+    clickCounter.timeout = setTimeout(() => {
+        clickCounter.count = 0;
+    }, 500);
+};
+exports.updateClickCounter = updateClickCounter;

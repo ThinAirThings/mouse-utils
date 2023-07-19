@@ -1,3 +1,7 @@
+/// <reference types="node" />
+/// <reference types="node" />
+/// <reference types="node" />
+/// <reference types="node" />
 import { MouseEvent as ReactMouseEvent } from 'react';
 import { Point } from '../../shared/graphics';
 export { Point };
@@ -27,3 +31,7 @@ export declare const mouseRect: (mouseDownPoint: Point, mouseMovePoint: Point) =
 };
 export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
 export declare const mouseGuard2: (event: MouseEvent | ReactMouseEvent, button: 'left' | 'right' | 'any', modifiers: Array<MouseModifierKey>, fn: () => void) => void;
+export declare const updateClickCounter: (clickCounter: {
+    count: number;
+    timeout: NodeJS.Timeout | null;
+}) => void;
