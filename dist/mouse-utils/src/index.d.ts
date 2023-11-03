@@ -34,4 +34,4 @@ export declare const mouseGuard2: (event: MouseEvent | ReactMouseEvent, button: 
 export declare const updateClickCounter: (clickCounter: {
     count: number;
     timeout: NodeJS.Timeout | null;
-}) => void;
+}) => number;

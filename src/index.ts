@@ -110,4 +110,5 @@ export const updateClickCounter = (clickCounter: {
     clickCounter.timeout = setTimeout(() => {
         clickCounter.count = 0
     }, 500)
+    return clickCounter.count
 }
