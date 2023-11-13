@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateClickCounter = exports.mouseGuard2 = exports.mouseGuard = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
+exports.updateClickCounter = exports.mouseGuard2 = exports.mouseGuard = exports.mouseDistance = exports.mouseRect = exports.mousePoint = exports.mouseModifierKey = exports.mouseButton = exports.MouseButton = exports.MouseModifierKey = void 0;
 const Switch_1 = require("../../shared/Switch");
 var MouseModifierKey;
 (function (MouseModifierKey) {
@@ -52,6 +52,13 @@ const mouseRect = (mouseDownPoint, mouseMovePoint) => {
     return { x, y, width, height };
 };
 exports.mouseRect = mouseRect;
+const mouseDistance = (mouseDownPoint, mouseMovePoint) => {
+    // Calculate the distance between two points using pythagorean theorem
+    const x = mouseDownPoint.x - mouseMovePoint.x;
+    const y = mouseDownPoint.y - mouseMovePoint.y;
+    return Math.sqrt(x * x + y * y);
+};
+exports.mouseDistance = mouseDistance;
 const mouseGuard = (event, button, modifier, fn) => {
     !(((0, exports.mouseButton)(event) === button)
         && ((MouseModifierKey[(0, exports.mouseModifierKey)(event)] === modifier) || (modifier === 'Any'))) || fn();

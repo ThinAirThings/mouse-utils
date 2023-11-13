@@ -29,6 +29,7 @@ export declare const mouseRect: (mouseDownPoint: Point, mouseMovePoint: Point) =
     width: number;
     height: number;
 };
+export declare const mouseDistance: (mouseDownPoint: Point, mouseMovePoint: Point) => number;
 export declare const mouseGuard: (event: MouseEvent | ReactMouseEvent, button: 'Left' | 'Right', modifier: keyof typeof MouseModifierKey, fn: () => void) => void;
 export declare const mouseGuard2: (event: MouseEvent | ReactMouseEvent, button: 'left' | 'right' | 'any', modifiers: Array<MouseModifierKey>, fn: () => void) => void;
 export declare const updateClickCounter: (clickCounter: {

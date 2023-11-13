@@ -53,6 +53,12 @@ export const mouseRect = (mouseDownPoint: Point, mouseMovePoint: Point) => {
     const height = Math.abs(mouseDownPoint.y - mouseMovePoint.y)
     return {x, y, width, height}
 }
+export const mouseDistance = (mouseDownPoint: Point, mouseMovePoint: Point) => {
+    // Calculate the distance between two points using pythagorean theorem
+    const x = mouseDownPoint.x - mouseMovePoint.x
+    const y = mouseDownPoint.y - mouseMovePoint.y
+    return Math.sqrt(x*x + y*y)
+}
 export const mouseGuard = (
     event: MouseEvent | ReactMouseEvent,
     button: 'Left' | 'Right', 
