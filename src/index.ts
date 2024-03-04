@@ -15,6 +15,7 @@ export enum MouseModifierKey {
     AltShiftCtrl= 7,
     Any=8
 }
+
 export enum MouseButton {
     Left = 'Left',
     Right = 'Right',
